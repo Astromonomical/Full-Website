@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %}Trains{% endblock %}
+
+{% block content %}
+<h1 align="center">Machines</h1>
+<ul class="list-group list-group-flush" id="notes">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Classification</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for machine in trains_list %}
+            <tr>
+                <th scope="row">{{ machine.id }}</th>
+                <td>{{ machine.name }}</td>
+                <td>{{ machine.rate }}</td>
+                <td>{{ machine.classification }}</td>
+                <td>
+                    <button type="btn" class="btn btn-primary">Edit</button>
+                    <button type="btn" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</ul>
+
+<br />
+<form action="/addmachine">
+    <button type="submit" class="btn btn-primary">Add New Machine</button>
+</form>
+{% endblock %}

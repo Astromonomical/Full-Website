@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}Add Machine{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Add a new machine</h3>
+    <div class="form-group">
+        <label for="name">Machine Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Machine Name" />
+    </div>
+
+    <div class="form-group">
+        <label for="rate">Rate</label>
+        <input type="number" class="form-control" id="rate" name="rate" placeholder="Enter Rate" />
+    </div>
+
+    <div class="form-group">
+        <label for="classification">Classification</label>
+        <select id="classification" class="form-control" name="classification">
+            <option selected>MPV</option>
+            <option>Stone Blower</option>
+            <option>Tamper</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirm</button>
+</form>
+
+{% endblock %}
