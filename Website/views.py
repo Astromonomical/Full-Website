@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for, jsonify
 from . import db
 from .models import Train
+import json
 
 views = Blueprint('views', __name__)
 
@@ -16,7 +17,7 @@ def trains():
     return render_template("trains.html")
 
 @views.route('/addmachine', methods=['GET', 'POST'])
-def addtrain():
+def add_train():
     if request.method == "POST":
         name = request.form.get('name')
         rate = request.form.get('rate')
@@ -31,9 +32,26 @@ def addtrain():
 
     return render_template("addmachine.html")
 
+@views.route('/delete-train', methods=['POST'])
+def delete_train():
+    train = json.loads(request.data)
+    trainId = train['machineId']
+    train = Train.query.get(trainId)
+    
+    db.session.delete(train)
+    db.session.commit()
+
+    return jsonify({})
+
+
 
 @views.route('/editmachine', methods=['POST', 'GET'])
-def edittrain():
+def edit_train():
     if request.method == "POST":
         return redirect(url_for("views.trains"))
     return render_template("editmachine.html")
+
+
+@views.route('/schedule', methods=['GET'])
+def schedule():
+    return render_template("schedule.html")
