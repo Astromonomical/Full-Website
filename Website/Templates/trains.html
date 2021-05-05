@@ -2,33 +2,31 @@
 
 {% block content %}
 <h1 class="display-3">Machines</h1>
-<ul class="list-group list-group-flush" id="notes">
-    <table class="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Rate</th>
-                <th scope="col">Classification</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for machine in trains_list %}
-            <tr>
-                <th scope="row">{{ machine.id }}</th>
-                <td>{{ machine.name }}</td>
-                <td>{{ machine.rate }}</td>
-                <td>{{ machine.classification }}</td>
-                <td>
-                    <button type="btn" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-danger" onClick="deleteTrain({{ machine.id }})">Delete</button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</ul>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Classification</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for machine in trains_list %}
+        <tr>
+            <th scope="row">{{ machine.id }}</th>
+            <td>{{ machine.name }}</td>
+            <td>{{ machine.rate }}</td>
+            <td>{{ machine.classification }}</td>
+            <td>
+                <button type="btn" class="btn btn-primary">Edit</button>
+                <button type="button" class="btn btn-danger" onClick="deleteTrain({{ machine.id }})">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 <br />
 <form action="/addmachine">

@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Add Customer{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h1 class="display-3">Add a new customer</h3>
+    <br />
+    <div class="form-row">
+        <div class="col col-lg-6">
+            <label for="name">Customer/Company Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Customer/Company name" required>
+            <div class="valid-feedback">
+                Please enter a name
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <label for="address_one">Address Line One</label>
+            <input type="text" class="form-control" id="address_one" name="address_one" placeholder="Address One" required>
+        </div>
+        <div class="col">
+            <label for="address_two">Address Line Two</label>
+            <input type="text" class="form-control" id="address_two" name="address_two" placeholder="Address Two" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <label for="address_three">Address Line Three</label>
+            <input type="text" class="form-control" id="address_three" name="address_three" placeholder="Address Three">
+        </div>
+        <div class="col">
+            <label for="postcode">Postcode</label>
+            <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Postcode" required>
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-primary" type="submit">Confirm</button>
+</form>
+
+{% endblock %}

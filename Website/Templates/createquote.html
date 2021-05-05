@@ -1,0 +1,96 @@
+{% extends "base.html" %} {% block title %}Create Quote{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1 class="display-3">Create Quote</h1>
+    </div>
+    <div class="col">
+        <h1 class="display-3">My Quotes</h1>
+    </div>
+</div>
+<div class="row justify-content-end">
+    <span class="border"></span>
+    <!-- NEW QUOTES -->
+    <div class="col">
+        <form method='POST'>
+            <div class="form-row">
+                <div class="col">
+                    <label for="customer">Customer</label>
+                    <select class="form-control" name="customer" id="customer">
+                        {% for customer in customer_list %}
+                        <option value="{{ customer.id }}">{{ customer.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="train">Machine</label>
+                    <select class="form-control" name="train" id="train">
+                        {% for train in trains_list %}
+                        <option value="{{ train.id }}">{{ train.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="col">
+                    <label for="week">Week</label>
+                    <input class="form-control" type="text" name="week" id="week" value="{{ week }}">
+                </div>
+                <div class="col">
+                    <label for="year">Year</label>
+                    <input class="form-control" type="text" name="year" id="year" value="{{ now.year }}">
+                </div>
+            </div>
+            <br />
+            <div class="form-row">
+                <div class="col">
+                    <label for="pla">PLA Number</label>
+                    <input class="form-control" type="text" name="pla" id="pla" value="PLA{{ now.strftime('%y') }}{{ now.strftime('%m') }}-{{ week }}">
+                </div>
+                <div class="col">
+                    <label for="cost">Cost</label>
+                    <input class="form-control" type="text" name="cost" id="cost">
+                </div>
+            </div>
+            <br />
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+    <span class="border"></span>
+    <!-- MY QUOTES -->
+    <div class="col">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">PLA</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Equipment</th>
+                    <th scope="col">Week</th>
+                    <th scope="col">Year</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for quote in quote_list %}
+                <tr>
+                    <th scope="row">{{ quote.id }}</th>
+                    <td>{{ quote.PLA }}</td>
+                    <td>{{ quote.cost }}</td>
+                    <td>{{ quote.cust_id }}</td>
+                    <td>{{ quote.train_id }}</td>
+                    <td>{{ quote.week }}</td>
+                    <td>{{ quote.year }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onClick="deleteQuote({{ quote.id }})">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
