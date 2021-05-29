@@ -3,5 +3,15 @@
 }
 
 #home {
-    font-size: 1.8em !important;
+    font-size: 1.8em;
+}
+
+.page {
+    height: 100%;
+    width: 100vh;
+    background-color: #12121f;
+    color: #eee;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
