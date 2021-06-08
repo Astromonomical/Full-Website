@@ -75,7 +75,9 @@ def edit_train():
 
 @views.route('/schedule', methods=['GET'])
 def schedule():
-    return render_template("schedule.html")
+    date = datetime.date.today()
+
+    return render_template("schedule.html", date=date)
 
 @views.route('/createquote', methods=['GET', 'POST'])
 def create_quote():
